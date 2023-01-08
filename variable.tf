@@ -1,8 +1,12 @@
+# Set variable on VPC.
+
 variable "vpc-cidr" {
     default = "10.0.0.0/16"
     description = "VPC CIDR Block"
     type = string
 }
+
+# Set variable on public subnets.
 
 variable "public-subnet-1-cidr" {
     default = "10.0.1.0/24"
@@ -15,6 +19,8 @@ variable "public-subnet-2-cidr" {
     description = "Public Subnet 2 CIDR Block"
     type = string
 }
+
+# Set variable on private subnets.
 
 variable "private-subnet-1-cidr" {
     default = "10.0.10.0/24"
