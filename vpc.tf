@@ -92,8 +92,8 @@ resource "aws_subnet" "private-subnet-2" {
     }
 }
 
-# Create Private Subnet 2
-resource "aws_subnet" "private-subnet-2" {
+# Create Private Subnet 3
+resource "aws_subnet" "private-subnet-3" {
     vpc_id                  = aws_vpc.vpc.id
     cidr_block              = "${var.private-subnet-3-cidr}"
     availability_zone       = us-east-1c
