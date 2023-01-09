@@ -103,3 +103,27 @@ resource "aws_subnet" "private-subnet-3" {
         Name    = "Private Subnet 3 | App Tier"
     }
 }
+
+# Create Private Subnet 4
+resource "aws_subnet" "private-subnet-4" {
+    vpc_id                  = aws_vpc.vpc.id
+    cidr_block              = "${var.private-subnet-4-cidr}"
+    availability_zone       = "us-east-1d"
+    map_public_ip_on_launch = false
+
+    tags        = {
+        Name    = "Private Subnet 4 | App Tier"
+    }
+}
+
+# Create Private Subnet 5
+resource "aws_subnet" "private-subnet-5" {
+    vpc_id                  = aws_vpc.vpc.id
+    cidr_block              = "${var.private-subnet-5-cidr}"
+    availability_zone       = "us-east-1e"
+    map_public_ip_on_launch = false
+
+    tags        = {
+        Name    = "Private Subnet 5 | App Tier"
+    }
+}
