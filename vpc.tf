@@ -1,6 +1,6 @@
 # Create VPC
 resource "aws_vpc" "vpc" {
-    cidr_block              = "${var.vpc-cidr}"
+    cidr_block              = "${var.vpc_cidr}"
     instance_tenancy        = "default"
     enable_dns_hostnames    = true
 
@@ -10,7 +10,7 @@ resource "aws_vpc" "vpc" {
 }
 
 # Create Internet Gateway and attach it to VPC
-resource "aws_internet_gateway" "internet-gateway" {
+resource "aws_internet_gateway" "internet_gateway" {
   vpc_id    = aws_vpc.vpc.id
 
   tags      = {
@@ -19,9 +19,9 @@ resource "aws_internet_gateway" "internet-gateway" {
 }
 
 # Create Public Subnet 1
-resource "aws_subnet" "public-subnet-1" {
+resource "aws_subnet" "public_subnet_1" {
     vpc_id                      = aws_vpc.vpc.id
-    cidr_block                  = "${var.public-subnet-1-cidr}"
+    cidr_block                  = "${var.public_subnet_1_cidr}"
     availability_zone           = "us-east-1a"
     map_public_ip_on_launch     = true
 
@@ -30,10 +30,10 @@ resource "aws_subnet" "public-subnet-1" {
     }
 }
 
-# Create Public Subnet 1
-resource "aws_subnet" "public-subnet-2" {
+# Create Public Subnet 2
+resource "aws_subnet" "public_subnet_2" {
     vpc_id                      = aws_vpc.vpc.id
-    cidr_block                  = "${var.public-subnet-2-cidr}"
+    cidr_block                  = "${var.public_subnet_2_cidr}"
     availability_zone           = "us-east-1b"
     map_public_ip_on_launch     = true
 
@@ -43,12 +43,12 @@ resource "aws_subnet" "public-subnet-2" {
 }
 
 # Create route table and add public route
-resource "aws_route_table" "public-route" {
+resource "aws_route_table" "public_route" {
   vpc_id = aws_vpc.vpc.id
 
   route {
     cidr_block              = "0.0.0.0/0"
-    gateway_id              = aws_internet_gateway.internet-gateway.id
+    gateway_id              = aws_internet_gateway.internet_gateway.id
   }
 
   tags = {
@@ -57,21 +57,21 @@ resource "aws_route_table" "public-route" {
 }
 
 # Associate Public Subnet 1 to "Public Route Table"
-resource "aws_route_table_association" "public-subnet-1-route-table-association" {
-  subnet_id                 = aws_subnet.public-subnet-1.id
-  route_table_id            = aws_route_table.public-route.id
+resource "aws_route_table_association" "public_subnet_1_route_table_association" {
+  subnet_id                 = aws_subnet.public_subnet_1.id
+  route_table_id            = aws_route_table.public_route.id
 }
 
 # Associate Public Subnet 2 to "Public Route Table"
-resource "aws_route_table_association" "public-subnet-2-route-table-association" {
-  subnet_id                 = aws_subnet.public-subnet-2.id
-  route_table_id            = aws_route_table.public-route.id
+resource "aws_route_table_association" "public_subnet_2_route_table_association" {
+  subnet_id                 = aws_subnet.public_subnet_2.id
+  route_table_id            = aws_route_table.public_route.id
 }
 
 # Create Private Subnet 1
-resource "aws_subnet" "private-subnet-1" {
+resource "aws_subnet" "private_subnet_1" {
     vpc_id                  = aws_vpc.vpc.id
-    cidr_block              = "${var.private-subnet-1-cidr}"
+    cidr_block              = "${var.private_subnet_1_cidr}"
     availability_zone       = "us-east-1a"
     map_public_ip_on_launch = false
 
@@ -81,9 +81,9 @@ resource "aws_subnet" "private-subnet-1" {
 }
 
 # Create Private Subnet 2
-resource "aws_subnet" "private-subnet-2" {
+resource "aws_subnet" "private_subnet_2" {
     vpc_id                  = aws_vpc.vpc.id
-    cidr_block              = "${var.private-subnet-2-cidr}"
+    cidr_block              = "${var.private_subnet_2_cidr}"
     availability_zone       = "us-east-1b"
     map_public_ip_on_launch = false
 
@@ -93,9 +93,9 @@ resource "aws_subnet" "private-subnet-2" {
 }
 
 # Create Private Subnet 3
-resource "aws_subnet" "private-subnet-3" {
+resource "aws_subnet" "private_subnet_3" {
     vpc_id                  = aws_vpc.vpc.id
-    cidr_block              = "${var.private-subnet-3-cidr}"
+    cidr_block              = "${var.private_subnet_3_cidr}"
     availability_zone       = "us-east-1c"
     map_public_ip_on_launch = false
 
@@ -105,9 +105,9 @@ resource "aws_subnet" "private-subnet-3" {
 }
 
 # Create Private Subnet 4
-resource "aws_subnet" "private-subnet-4" {
+resource "aws_subnet" "private_subnet_4" {
     vpc_id                  = aws_vpc.vpc.id
-    cidr_block              = "${var.private-subnet-4-cidr}"
+    cidr_block              = "${var.private_subnet_4_cidr}"
     availability_zone       = "us-east-1d"
     map_public_ip_on_launch = false
 
@@ -117,9 +117,9 @@ resource "aws_subnet" "private-subnet-4" {
 }
 
 # Create Private Subnet 5
-resource "aws_subnet" "private-subnet-5" {
+resource "aws_subnet" "private_subnet_5" {
     vpc_id                  = aws_vpc.vpc.id
-    cidr_block              = "${var.private-subnet-5-cidr}"
+    cidr_block              = "${var.private_subnet_5_cidr}"
     availability_zone       = "us-east-1e"
     map_public_ip_on_launch = false
 
