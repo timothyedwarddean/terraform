@@ -20,6 +20,24 @@ variable "public_subnet_2_cidr" {
   type        = string
 }
 
+variable "public_subnet_3_cidr" {
+  default     = "10.0.3.0/24"
+  description = "Public Subnet 3 CIDR Block"
+  type        = string
+}
+
+variable "public_subnet_4_cidr" {
+  default     = "10.0.4.0/24"
+  description = "Public Subnet 4 CIDR Block"
+  type        = string
+}
+
+variable "public_subnet_5_cidr" {
+  default     = "10.0.5.0/24"
+  description = "Public Subnet 5 CIDR Block"
+  type        = string
+}
+
 # Set variable on private subnets.
 
 variable "private_subnet_1_cidr" {
