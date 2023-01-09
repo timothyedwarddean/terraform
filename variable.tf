@@ -39,3 +39,15 @@ variable "private-subnet-3-cidr" {
     description = "Private Subnet 3 CIDR Block"
     type = string
 }
+
+variable "private-subnet-4-cidr" {
+    default = "10.0.40.0/24"
+    description = "Private Subnet 4 CIDR Block"
+    type = string
+}
+
+variable "private-subnet-5-cidr" {
+    default = "10.0.50.0/24"
+    description = "Private Subnet 5 CIDR Block"
+    type = string
+}
