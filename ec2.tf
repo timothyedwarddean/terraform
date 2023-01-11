@@ -1,9 +1,13 @@
+# Pull data on AMI catalog for phpBB package by Bitnami.
+
 data "aws_ami" "phpbb_ami" {
     most_recent = true
     filter {
         name = "phpBB packaged by Bitnami"
     }
 }
+
+# Create network interface for public phpBB server.
 
 resource "aws_network_interface" "phpbb_server" {
   subnet_id   = aws_subnet.public_subnet_1.id
@@ -13,6 +17,8 @@ resource "aws_network_interface" "phpbb_server" {
     Name = "primary_network_interface"
   }
 }
+
+# Provision phpBB instance as a t2.micro EC2 instance.
 
 resource "aws_instance" "phpbb_server" {
   ami           = data.aws_ami.phpbb_ami
