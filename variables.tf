@@ -69,3 +69,9 @@ variable "private_subnet_5_cidr" {
   description = "Private Subnet 5 CIDR Block"
   type        = string
 }
+
+variable "phpBB_ec2" {
+  default     = "phpBB"
+  description = "EC2 instance for phpBB forum."
+  type        = string
+}
